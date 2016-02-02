@@ -44,14 +44,13 @@ var JUnitReporter = function (baseReporterDecorator, config, logger, helper, for
       .att('id', 0)
       .att('hostname', os.hostname())
 
-    suite.ele('properties')
-      .ele('property', {name: 'browser.fullName', value: browser.fullName})
+    var propertiesElement = suite.ele('properties')
+    propertiesElement.ele('property', {name: 'browser.fullName', value: browser.fullName})
 
     // add additional properties passed in through the config
     for (var property in properties) {
       if (properties.hasOwnProperty(property)) {
-        suite.ele('properties')
-          .ele('property', {name: property, value: properties[property]})
+        propertiesElement.ele('property', {name: property, value: properties[property]})
       }
     }
   }
